@@ -3,6 +3,7 @@ import './App.css'
 import ItemInput from './component/input'
 import AddNewList from './component/addNewList';
 import Welecome from './component/welcom';
+import ContextItem from './store/item-store-context';
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
    const [currentItem,setItem] = useState([]);
 
-    function handleList(item,date){
+    function addItem(item,date){
       const newTodoItem = [
         ...currentItem,{name:item , date:date}
       ];
@@ -24,7 +25,7 @@ function App() {
     //   ]);
     // }
 
-   function onDelete(todoItem){
+   function deleteItem(todoItem){
     // const newTodoItems = currentItem.filter((item) => item.name !== todoItem)
                     //  OR 
   // is mai jo bhi not equal hai vo sab value array se mil jayegi aur equal wali hat jayegi
@@ -36,12 +37,26 @@ function App() {
 
   return (
     <>
+      <ContextItem.Provider value={{
+       currentItem,
+       addItem,
+       deleteItem,
+
+      //  or
+
+      /* items: currentItem,
+       addItem:addItem,
+       deleteItem:deleteItem,*/
+
+        }}> 
       <div>
         <h1 className='text-center bg-info p-2'>Todo List</h1>
-       <ItemInput handleList={handleList}/> 
-       {currentItem == false? <Welecome />:  <AddNewList todoList={currentItem}  onDelete={onDelete} />}
+       <ItemInput/> 
+       {<Welecome />}
+        <AddNewList/>
        
       </div>
+      </ContextItem.Provider>
     </>
   )
 }

@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
+import ContextItem from "../store/item-store-context";
 
-function AddList({ list, date, onDelete }) {
+function AddList({ list, date }) {
+
+    const {deleteItem} = useContext(ContextItem)
 
     return (
         <>
@@ -12,7 +16,7 @@ function AddList({ list, date, onDelete }) {
                     <p>{date}</p>
                 </div>
                 <div className="col-sm-12 col-md-4 col-lg-1">
-                    <button className="btn btn-danger w-100" onClick={()=> onDelete(list)}><MdDelete /></button>
+                    <button className="btn btn-danger w-100" onClick={()=> deleteItem(list)}><MdDelete /></button>
                 </div>
             </div>
         </>

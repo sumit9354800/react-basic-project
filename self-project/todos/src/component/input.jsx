@@ -1,7 +1,15 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { IoAddCircleSharp } from "react-icons/io5";
+import ContextItem from "../store/item-store-context";
 
-function ItemInput({ handleList }) {
+function ItemInput() {
+
+    const {addItem} = useContext(ContextItem);
+   
+                 // or
+   /* const addItem = useContext(ContextItem);
+    const newAdd = addItem.addItem;*/
+
 
     let todoItem = useRef();
     let dueDate = useRef();
@@ -11,7 +19,7 @@ function ItemInput({ handleList }) {
         const newItem = todoItem.current.value;
         const newDate= dueDate.current.value;
         
-        handleList(newItem, newDate);
+        addItem(newItem, newDate);
         todoItem.current.value ='';
         dueDate.current.value ='';
         // setList('');

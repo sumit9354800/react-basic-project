@@ -1,12 +1,22 @@
 import AddList from "./addList";
+import ContextItem from "../store/item-store-context";
+import { useContext } from "react";
 
-function AddNewList({ todoList , onDelete}) {
+function AddNewList() {
 
+    const {currentItem} = useContext(ContextItem);
+    
+                     // or
 
+    // const contextValue = useContext(ContextItem);
+    //  const values = contextValue.items;
+    //  const onDelete = contextValue.deleteItem;
+    
+    console.log(currentItem)
     return (
         <>
-            {todoList.map((item) => (
-                <AddList key={item.name} list={item.name} date={item.date} onDelete={onDelete} />
+            {currentItem.map((item) => (
+                <AddList key={item.name} list={item.name} date={item.date} />
             ))}
         </>
     )
