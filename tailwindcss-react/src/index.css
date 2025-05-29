@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.custom-border:hover{
+    box-shadow: 3px 3px black;
+}
+
+* {
+    font-family: poppins, sans-serif;
+}

@@ -39,6 +39,8 @@ const ContextItemProvider = ({ children }) => {
             }
         }
         dispatchItem(AddStateItem);
+        localStorage.setItem(item,date);
+
     }
 
 
@@ -52,7 +54,7 @@ const ContextItemProvider = ({ children }) => {
         dispatchItem(deleteStateItem)
 
     }
-
+   
     return <ContextItem.Provider value={{
         currentItem,
         addItem,

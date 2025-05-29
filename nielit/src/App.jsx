@@ -16,7 +16,7 @@ const courses = {
   ],
 };
 
- function QuizApp() {
+function QuizApp() {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -64,7 +64,7 @@ const courses = {
           <a className="navbar-brand" href="#">Quiz App</a>
         </div>
       </nav>
-      
+
       {!selectedCourse ? (
         <div className="mt-4 text-center">
           <h2>Select a Quiz</h2>
@@ -80,9 +80,9 @@ const courses = {
           <h5 className="text-danger">Time Left: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')} min</h5>
           <div className="card-body">
             {courses[selectedCourse][currentQuestion].options.map((option) => (
-              <button 
-                key={option} 
-                onClick={() => handleAnswer(option)} 
+              <button
+                key={option}
+                onClick={() => handleAnswer(option)}
                 className={`btn d-block mt-2 ${answers[currentQuestion] === option ? "btn-warning" : "btn-outline-secondary"}`}
               >
                 {option}
